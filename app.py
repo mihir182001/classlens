@@ -11,9 +11,6 @@ import streamlit as st
 from src.analysis import analyze_video
 
 
-# ============================================================
-# PAGE CONFIGURATION
-# ============================================================
 
 st.set_page_config(
     page_title="ClassLens | 8x8 Class Quality",
@@ -31,9 +28,7 @@ st.info(
 )
 
 
-# ============================================================
-# ASSESSMENT RUBRIC
-# ============================================================
+
 
 RUBRIC = {
     "Rapport and introduction": {
@@ -97,9 +92,7 @@ SCORE_TO_GRADE = {
 }
 
 
-# ============================================================
-# REFERENCE FEEDBACK
-# ============================================================
+
 
 def find_reference_feedback(filename):
     """
@@ -170,9 +163,7 @@ def find_reference_feedback(filename):
     return matches
 
 
-# ============================================================
-# MAP REFERENCE NOTES TO RUBRIC CRITERIA
-# ============================================================
+
 
 def identify_relevant_criteria(feedback):
     """
@@ -234,9 +225,7 @@ def identify_relevant_criteria(feedback):
     return relevant
 
 
-# ============================================================
-# RUBRIC SCORING
-# ============================================================
+
 
 def suggest_grade(scores):
     """Calculate a proposed grade from the reviewer-entered ratings."""
@@ -256,9 +245,7 @@ def suggest_grade(scores):
         return "Poor"
 
 
-# ============================================================
-# SIDEBAR
-# ============================================================
+
 
 with st.sidebar:
     st.header("Analysis settings")
@@ -285,9 +272,6 @@ with st.sidebar:
     )
 
 
-# ============================================================
-# VIDEO UPLOAD
-# ============================================================
 
 uploaded = st.file_uploader(
     "Upload an online class recording",
@@ -339,9 +323,8 @@ if uploaded:
                 pass
 
 
-# ============================================================
-# RESULTS
-# ============================================================
+
+# Results
 
 if "analysis_result" in st.session_state:
 
@@ -374,9 +357,7 @@ if "analysis_result" in st.session_state:
     )
 
 
-    # --------------------------------------------------------
-    # OBSERVATIONS
-    # --------------------------------------------------------
+  
 
     st.subheader("Evidence and observations")
 
@@ -396,9 +377,6 @@ if "analysis_result" in st.session_state:
                 )
 
 
-    # --------------------------------------------------------
-    # MEASURED SIGNALS
-    # --------------------------------------------------------
 
     st.subheader("Measured signals")
 
@@ -439,9 +417,8 @@ if "analysis_result" in st.session_state:
     )
 
 
-    # --------------------------------------------------------
-    # TRANSCRIPT
-    # --------------------------------------------------------
+   
+    
 
     with st.expander("View transcript"):
         st.text(
@@ -450,9 +427,7 @@ if "analysis_result" in st.session_state:
         )
 
 
-    # --------------------------------------------------------
-    # REFERENCE FEEDBACK
-    # --------------------------------------------------------
+    
 
     st.divider()
     st.subheader("Matching 8x8 reference feedback")
@@ -524,9 +499,7 @@ if "analysis_result" in st.session_state:
         )
 
 
-    # --------------------------------------------------------
-    # REVIEWER RUBRIC
-    # --------------------------------------------------------
+    
 
     st.divider()
     st.header("Teaching-quality assessment")
@@ -544,9 +517,7 @@ if "analysis_result" in st.session_state:
         st.session_state["rubric_notes"] = {}
 
 
-    # --------------------------------------------------------
-    # FIVE CRITERIA
-    # --------------------------------------------------------
+    
 
     for criterion, details in RUBRIC.items():
 
@@ -591,9 +562,7 @@ if "analysis_result" in st.session_state:
             st.session_state["rubric_notes"][criterion] = note
 
 
-    # --------------------------------------------------------
-    # SUGGESTED GRADE
-    # --------------------------------------------------------
+    
 
     scores = st.session_state["rubric_scores"]
 
@@ -633,9 +602,7 @@ if "analysis_result" in st.session_state:
         )
 
 
-    # --------------------------------------------------------
-    # FINAL GRADE AND QUALITY FLAG
-    # --------------------------------------------------------
+    
 
     reviewer_grade = st.selectbox(
         "Final reviewer grade",
@@ -669,9 +636,7 @@ if "analysis_result" in st.session_state:
         )
 
 
-    # --------------------------------------------------------
-    # DOWNLOADABLE REPORT
-    # --------------------------------------------------------
+    
 
     report = {
         "recording": recording_name,
@@ -714,9 +679,7 @@ if "analysis_result" in st.session_state:
     )
 
 
-# ============================================================
-# FOOTER
-# ============================================================
+
 
 st.divider()
 
