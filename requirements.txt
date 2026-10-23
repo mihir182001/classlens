@@ -1,0 +1,6 @@
+﻿streamlit
+pandas
+numpy
+opencv-python-headless
+librosa
+faster-whisper
