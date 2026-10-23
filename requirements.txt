@@ -1,7 +1,7 @@
-streamlit
-pandas
-numpy
-opencv-python-headless
-librosa
-faster-whisper
+﻿streamlit==1.50.0
+pandas==2.3.3
+numpy==2.2.6
+opencv-python-headless==4.11.0.86
+librosa==0.11.0
+faster-whisper==1.2.1
 av==18.1.0
