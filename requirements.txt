@@ -1,6 +1,7 @@
-﻿streamlit
+streamlit
 pandas
 numpy
 opencv-python-headless
 librosa
 faster-whisper
+av==18.1.0
